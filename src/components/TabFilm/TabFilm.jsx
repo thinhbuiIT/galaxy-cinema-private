@@ -4,7 +4,7 @@ import { Tabs } from 'antd';
 
 export default function TabFilm() {
     return (
-        <Tabs defaultActiveKey="1" /* Chọn tab mặc định */>
+        <Tabs defaultActiveKey="1">
             <Tabs.TabPane tab="Tab 1" key="1">
                 Content of Tab 1
             </Tabs.TabPane>
