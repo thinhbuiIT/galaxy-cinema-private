@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Tabs } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+
 import './tabfilm.scss'
+import { fetchFilmCommingSoonStart } from '../../redux/Film/commingSoonSlice';
+import { fetchFilmShowingStart } from '../../redux/Film/showingSlice';
 
 export default function TabFilm() {
+    const filmCommingSoon = useSelector(state => state.filmCommingSoon)
+    const filmShowing = useSelector(state => state.filmShowing)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchFilmCommingSoonStart())
+        dispatch(fetchFilmShowingStart())
+    }, [dispatch])
+
+    console.log('filmShowing : ', filmShowing);
+    console.log('filmCommingSoon : ', filmCommingSoon);
 
     return (
         <section className='tabFilm'>
@@ -10,80 +26,30 @@ export default function TabFilm() {
                 <Tabs defaultActiveKey="1">
                     <Tabs.TabPane tab="Phim Đang Chiếu" key="1">
                         <div className='showing'>
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/9/2/450_1693671073683.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/9/2/450_1693671073683.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/9/2/450_1693671073683.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/9/2/450_1693671073683.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/9/2/450_1693671073683.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/9/2/450_1693671073683.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
+                            {filmShowing.loading === true && <div>...Loading</div>}
+                            {
+                                filmShowing.data.map(film => (
+                                    <div className='showing__film'>
+                                        <img className='showing__film--image' src={film.imageLandscape} alt="image" />
+                                        <h2 className='showing__film--title'>{film.name}</h2>
+                                        <p className='showing__film--paragraph'>{film.subName}</p>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Phim Sắp Chiếu" key="2">
                         <div className='showing'>
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/8/28/equalizer-2_1693210805079.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/8/28/equalizer-2_1693210805079.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/8/28/equalizer-2_1693210805079.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/8/28/equalizer-2_1693210805079.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/8/28/equalizer-2_1693210805079.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
-
-                            <div className='showing__film'>
-                                <img className='showing__film--image' src="https://cdn.galaxycine.vn/media/2023/8/28/equalizer-2_1693210805079.jpg" alt="image" />
-                                <h2 className='showing__film--title'>THE NUN II</h2>
-                                <p className='showing__film--paragraph'>ÁC QUỶ MA SƠ II</p>
-                            </div>
+                            {filmCommingSoon.loading === true && <div>...Loading</div>}
+                            {
+                                filmCommingSoon.data.map(film => (
+                                    <div className='showing__film'>
+                                        <img className='showing__film--image' src={film.imageLandscape} alt="image" />
+                                        <h2 className='showing__film--title'>{film.name}</h2>
+                                        <p className='showing__film--paragraph'>{film.subName}</p>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </Tabs.TabPane>
                 </Tabs>
