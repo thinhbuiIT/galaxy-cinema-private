@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel } from 'antd';
-import './_slider.scss'
+import './slider.scss'
 
 const contentStyle = {
     margin: 0,
