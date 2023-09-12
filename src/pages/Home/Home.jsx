@@ -1,14 +1,14 @@
 import React from 'react'
-import Navbar from '../../components/NavBar/Navbar'
 import Slider from '../../components/Slider/Slider'
 import TabFilm from '../../components/TabFilm/TabFilm'
+import Blog from '../../components/Blog/Blog'
 
 export default function Home() {
     return (
         <div>
-            <Navbar />
             <Slider />
             <TabFilm />
+            <Blog />
         </div>
     )
 }

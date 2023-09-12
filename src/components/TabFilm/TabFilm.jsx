@@ -1,35 +1,21 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Tabs } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import './tabfilm.scss'
-import { fetchFilmCommingSoonStart } from '../../redux/Film/commingSoonSlice';
-import { fetchFilmShowingStart } from '../../redux/Film/showingSlice';
 
 export default function TabFilm() {
-    const filmCommingSoon = useSelector(state => state.filmCommingSoon)
-    const filmShowing = useSelector(state => state.filmShowing)
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(fetchFilmCommingSoonStart())
-        dispatch(fetchFilmShowingStart())
-    }, [dispatch])
-
-    console.log('filmShowing : ', filmShowing);
-    console.log('filmCommingSoon : ', filmCommingSoon);
-
+    const film = useSelector(state => state.film)
     return (
         <section className='tabFilm'>
-            <div className='container'>
+            <div className='container flex flex-col justify-start'>
                 <Tabs defaultActiveKey="1">
+                    {film?.loading === true && <div>...Loading</div>}
                     <Tabs.TabPane tab="Phim Đang Chiếu" key="1">
                         <div className='showing'>
-                            {filmShowing.loading === true && <div>...Loading</div>}
                             {
-                                filmShowing.data.map(film => (
-                                    <div className='showing__film'>
+                                film.data.data?.movieShowing.slice(0, 6).map(film => (
+                                    <div className='showing__film' key={film.id}>
                                         <img className='showing__film--image' src={film.imageLandscape} alt="image" />
                                         <h2 className='showing__film--title'>{film.name}</h2>
                                         <p className='showing__film--paragraph'>{film.subName}</p>
@@ -40,10 +26,9 @@ export default function TabFilm() {
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Phim Sắp Chiếu" key="2">
                         <div className='showing'>
-                            {filmCommingSoon.loading === true && <div>...Loading</div>}
                             {
-                                filmCommingSoon.data.map(film => (
-                                    <div className='showing__film'>
+                                film.data.data?.movieCommingSoon.map(film => (
+                                    <div className='showing__film' key={film.id}>
                                         <img className='showing__film--image' src={film.imageLandscape} alt="image" />
                                         <h2 className='showing__film--title'>{film.name}</h2>
                                         <p className='showing__film--paragraph'>{film.subName}</p>

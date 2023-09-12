@@ -1,5 +1,67 @@
+@import '../../index.scss';
+
 .blog {
-    .ant-tabs-tab-btn {
-        text-transform: uppercase;
+    &__comment {
+        &--title {
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            font-weight: 400;
+
+            &::after {
+                display: block;
+                width: 50px;
+                height: 2px;
+                margin-top: 8px;
+                content: "";
+                background-color: #f26b38;
+            }
+        }
+
+        &--block {
+            cursor: pointer;
+
+            .image {
+                max-width: 100%;
+                height: auto;
+                transition: opacity 0.3s ease;
+            }
+
+            .likes {
+                background-color: #327fea;
+                color: #fff;
+                border-radius: 5px;
+                padding: 0 10px;
+                margin-right: 10px;
+                font-size: 13px;
+            }
+
+            .eyes {
+                background-color: $paragraph_color;
+                border-radius: 5px;
+                padding: 0 10px;
+                font-size: 13px;
+                margin-right: 10px;
+            }
+
+            .block__content {
+                &--title {
+                    font-size: 1.25rem;
+                }
+
+                &--paragraph {
+                    color: $paragraph_color;
+                }
+            }
+
+            &:hover {
+                img {
+                    opacity: .7;
+                }
+
+                h2 {
+                    color: $primary_color;
+                }
+            }
+        }
     }
 }

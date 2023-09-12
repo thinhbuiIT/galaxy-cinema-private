@@ -6,24 +6,24 @@ const initialState = {
     error: null
 }
 
-const commingSoonSlice = createSlice({
-    name: 'filmCommingSoon',
+const filmSlice = createSlice({
+    name: 'film',
     initialState,
     reducers: {
-        fetchFilmCommingSoonStart: (state) => {
+        fetchFilmStart: (state) => {
             state.loading = true;
             state.error = null;
         },
-        fetchFilmCommingSoonSuccess: (state, action) => {
+        fetchFilmSuccess: (state, action) => {
             state.loading = false;
             state.data = action.payload;
         },
-        fetchFilmCommingSoonError: (state, action) => {
+        fetchFilmError: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         }
     }
 })
 
-export const { fetchFilmCommingSoonStart, fetchFilmCommingSoonSuccess, fetchFilmCommingSoonError } = commingSoonSlice.actions
-export default commingSoonSlice.reducer
+export const { fetchFilmStart, fetchFilmSuccess, fetchFilmError } = filmSlice.actions
+export default filmSlice.reducer

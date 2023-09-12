@@ -1,12 +1,10 @@
-import rootFilmShowingSaga from "./Film/showingSaga";
-import rootFilmCommingSoonSaga from "./Film/commingSoonSaga";
+import rootFilmSaga from "./Film/filmSaga";
 import { all } from "redux-saga/effects";
 
 
 function* rootSaga() {
     yield all([
-        rootFilmShowingSaga(),
-        rootFilmCommingSoonSaga(),
+        rootFilmSaga(),
     ]);
 }
 

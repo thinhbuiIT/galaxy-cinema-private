@@ -1,12 +1,17 @@
+@import '../../index.scss';
+
 .tabFilm {
     display: flex;
     justify-content: center;
 
-    .container {
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+    .ant-tabs-tab-btn {
+        text-transform: uppercase;
+        color: #000;
+        font-weight: 400;
+    }
+
+    .ant-tabs-tab {
+        border-color: $primary_color;
     }
 
     .ant-tabs-content-holder {
@@ -16,8 +21,8 @@
     &__button {
         margin-left: auto;
         padding: 1rem 2rem;
-        color: orange;
-        border: 1px solid orange;
+        color: $primary_color;
+        border: 1px solid $primary_color;
     }
 
     .showing {

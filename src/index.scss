@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$primary_color: #F26B38;
+$paragraph_color: #A0A3A7;
+
+.container {
+    width: 80%;
+}

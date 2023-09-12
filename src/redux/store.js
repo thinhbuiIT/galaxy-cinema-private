@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
-import commingSoonReducer from './Film/commingSoonSlice';
-import showingReducer from './Film/showingSlice';
+import filmReducer from './Film/filmSlice';
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './saga';
 
 const rootReducer = combineReducers({
-    filmCommingSoon: commingSoonReducer,
-    filmShowing: showingReducer,
+    film: filmReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware()

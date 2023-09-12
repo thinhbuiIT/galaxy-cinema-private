@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const menu = [
     {
         id: 1,
         title: "Mua vé",
-        path: ""
+        path: "/lich-chieu"
     },
     {
         id: 2,
@@ -46,17 +47,17 @@ export default function Navbar() {
             <section className='navbar__head'>
                 <div className='container'>
                     <div className='navbar__logo'>
-                        <img src="https://www.galaxycine.vn/website/images/galaxy-logo.png" alt="" />
+                        <Link to={'/'}><img src="https://www.galaxycine.vn/website/images/galaxy-logo.png" alt="" /></Link>
                     </div>
                     <div className='navbar__search'>
                         <div className='navbar__search--content'>
                             <input type="text" placeholder='Tìm tên phim, diễn viên' />
-                            <img src="" alt="icon" />
+                            {/* <FontAwesomeIcon icon="fa-light fa-magnifying-glass" style={{ color: "#b5b5b5", }} /> */}
                         </div>
                     </div>
                     <div className='navbar__option'>
                         <div className='navbar__option--login'>
-                            <img src="" alt="icon" />
+                            {/* icon */}
                             <span>Đăng nhập</span>
                         </div>
                         <div className='navbar__option--i8vn'>
