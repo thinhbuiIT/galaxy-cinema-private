@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const menu = [
     {

@@ -60,19 +60,16 @@ export default function TicketByFilm() {
             <div className='ticketByFilm__time flex flex-col w-1/3'>
                 <h2 className='ticketByFilm__film--title'>Chọn suất</h2>
                 <ul className='ticketByFilm__film--list'>
-                    {
-                        listThreate?.length === 0
-                            ?
-                            <li className='list__block'>
-                                <h2 className='list__block--title'>Vui lòng chọn suất</h2>
-                            </li>
-                            :
-                            listThreate?.map(threate => (
-                                <li className='list__block' key={threate.id}>
-                                    <h2 className='list__block--title'>{threate.name}</h2>
-                                </li>
-                            ))
-                    }
+                    <li className='show__time'>
+                        <h2>Thứ tư, 13/09/2023</h2>
+                        <div className="show__time--content">
+                            <h2>2D - Phụ đề</h2>
+                            <div className="show__time--list">
+                                
+                            </div>
+                        </div>
+                    </li>
+
                 </ul>
             </div>
         </div >
