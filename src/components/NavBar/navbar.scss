@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .navbar {
 
     &__head {
@@ -27,7 +29,7 @@
         &--content {
             display: flex;
             align-items: center;
-            padding: .2rem;
+            padding: .2rem 1rem;
 
             input {
                 outline: none;
@@ -39,9 +41,12 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        color: $paragraph_color;
+        font-size: .9rem;
 
         &--login {
             display: flex;
+
         }
 
         &--i8vn {
@@ -58,18 +63,7 @@
     }
 
     &__bot {
-        display: flex;
-        justify-content: center;
         background-color: #000000;
-
-        .container {
-            width: 70%;
-        }
-
-        ul {
-            display: flex;
-            justify-content: space-between;
-        }
 
         &--item {
             text-align: center;
@@ -78,6 +72,10 @@
             text-transform: uppercase;
             padding: .8rem 1rem;
             width: 100%;
+
+            &:hover {
+                color: $primary_color;
+            }
         }
     }
 }

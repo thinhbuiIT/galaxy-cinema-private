@@ -4,6 +4,6 @@ export const fetchCinemas = async () => {
     return await api.get('/cinemas')
 }
 
-export const fetchSearchCinemas = async (key) => {
-    return await api.get(`/cinemas/${key}`)
+export const fetchFilmByCinemas = async (id) => {
+    return await api.get(`/cinemas/${id}`)
 }

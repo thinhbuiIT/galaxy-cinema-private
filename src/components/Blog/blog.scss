@@ -21,7 +21,7 @@
             cursor: pointer;
 
             .image {
-                max-width: 100%;
+                width: 100%;
                 height: auto;
                 transition: opacity 0.3s ease;
             }
@@ -36,7 +36,7 @@
             }
 
             .eyes {
-                background-color: $paragraph_color;
+                background-color: rgba($color: #000000, $alpha: .2);
                 border-radius: 5px;
                 padding: 0 10px;
                 font-size: 13px;
@@ -45,11 +45,21 @@
 
             .block__content {
                 &--title {
-                    font-size: 1.25rem;
+                    font-size: 1.125rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-height: 3rem;
                 }
 
                 &--paragraph {
                     color: $paragraph_color;
+                    white-space: wrap;
+                    overflow: hidden;
+                    /* Ẩn nội dung tràn */
+                    text-overflow: ellipsis;
+                    /* Hiển thị dấu chấm (...) khi tràn nội dung */
+                    width: 300px;
+                    max-height: 3rem;
                 }
             }
 

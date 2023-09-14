@@ -9,4 +9,33 @@
             border-radius: 50%;
         }
     }
+
+    position: relative;
+
+    &__button {
+        &--prev {
+            position: absolute;
+            z-index: 1;
+            height: 100%;
+            padding: 0 20px;
+            background-image: linear-gradient(to left, #ffffff00, #00000020);
+
+            &:hover {
+                background-image: linear-gradient(to left, #ffffff00, #00000074);
+            }
+        }
+
+        &--next {
+            position: absolute;
+            z-index: 1;
+            height: 100%;
+            padding: 0 20px;
+            right: 0;
+            background-image: linear-gradient(to right, #ffffff00, #00000020);
+
+            &:hover {
+                background-image: linear-gradient(to right, #ffffff00, #00000020);
+            }
+        }
+    }
 }

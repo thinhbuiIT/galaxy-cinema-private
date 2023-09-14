@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import './ticketByFilm.scss'
-import { fetchSearchFilm, fetchSearchFilmById } from '../../../services/movieApi';
+import { fetchSearchFilm } from '../../../services/movieApi';
 
+import './ticketByFilm.scss'
 
 export default function TicketByFilm() {
     const film = useSelector(state => state.film.data.data?.movieShowing)
     const [listThreate, setListThreate] = useState([])
+    const [listTimes, setListTimes] = useState([])
 
     const HandleThreate = async (id) => {
         const response = await fetchSearchFilm(id)
-        const response1 = await fetchSearchFilmById(id)
         setListThreate(response.data)
-        console.log('listThreate : ', listThreate);
-        console.log('response1 : ', response1.data);
     }
-
+    const HandleTimes = (id) => {
+        setListTimes(listThreate.filter(time => time.id === id))
+    }
+    useEffect(() => {
+    }, [listTimes]);
+    console.log('reRender');
     return (
         <div className='ticketByFilm flex justify-between gap-5'>
             <div className='ticketByFilm__film flex flex-col w-1/3'>
@@ -50,7 +53,7 @@ export default function TicketByFilm() {
                             </li>
                             :
                             listThreate?.map(threate => (
-                                <li className='list__block' key={threate.id}>
+                                <li onClick={() => HandleTimes(threate.id)} className='list__block' key={threate.id}>
                                     <h2 className='list__block--title'>{threate.name}</h2>
                                 </li>
                             ))
@@ -60,16 +63,31 @@ export default function TicketByFilm() {
             <div className='ticketByFilm__time flex flex-col w-1/3'>
                 <h2 className='ticketByFilm__film--title'>Chọn suất</h2>
                 <ul className='ticketByFilm__film--list'>
-                    <li className='show__time'>
-                        <h2>Thứ tư, 13/09/2023</h2>
-                        <div className="show__time--content">
-                            <h2>2D - Phụ đề</h2>
-                            <div className="show__time--list">
-                                
-                            </div>
-                        </div>
-                    </li>
-
+                    {
+                        listTimes.map(time => (
+                            time.dates.map((items, index) => (
+                                <li className='show__time p-3' key={index}>
+                                    <h2>{items.dayOfWeekLabel}, <span>{items.showDate}</span></h2>
+                                    <div className="show__time--content mt-3">
+                                        {
+                                            items.bundles.map((info, index) => (
+                                                <div className='flex items-start' key={index}>
+                                                    <h2 className='w-1/3 show__time--title'><span className='uppercase'>{info.version}</span> - {info.caption === 'sub' ? 'Phụ đề' : 'Lồng tiếng'}</h2>
+                                                    <div className="show__time--list flex flex-wrap w-2/3 gap-3">
+                                                        {
+                                                            info.sessions.map((items, index) => (
+                                                                <p key={index} className='show__time--items w-1/4 text-center p-0'>{items.showTime}</p>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                </li>
+                            ))
+                        ))
+                    }
                 </ul>
             </div>
         </div >
