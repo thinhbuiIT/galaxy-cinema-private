@@ -3,6 +3,7 @@ import { Carousel } from 'antd';
 import './slider.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import TicketQuickly from '../TicketQuickly/TicketQuickly';
 
 const contentStyle = {
     margin: 0,
@@ -69,12 +70,7 @@ const Slider = () => {
             </Carousel>
 
 
-            {/* <div className='slider__form'>
-                    <div className='container'>
-                        <h2 className='slider__form--title'>Mua vé nhanh</h2>
-
-                    </div>
-                </div> */}
+            <TicketQuickly />
         </section>
     );
 };

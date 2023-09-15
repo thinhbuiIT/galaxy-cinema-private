@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { fetchSearchFilm } from '../../../services/movieApi';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import './ticketByFilm.scss'
 
 export default function TicketByFilm() {
     const film = useSelector(state => state.film.data.data?.movieShowing)
-    const [listThreate, setListThreate] = useState([])
+    const cinemaByFilm = useSelector(state => state.cinemaByFilm)
+
+    const dispatch = useDispatch()
+
     const [listTimes, setListTimes] = useState([])
 
-    const HandleThreate = async (id) => {
-        const response = await fetchSearchFilm(id)
-        setListThreate(response.data)
+    const HandleThreate = (id) => {
+        dispatch({type: 'FETCH_CINEMA_BY_FILM', payload: id})
     }
     const HandleTimes = (id) => {
-        setListTimes(listThreate.filter(time => time.id === id))
+        setListTimes(cinemaByFilm.data?.filter(time => time.id === id))
     }
-    useEffect(() => {
-    }, [listTimes]);
-    console.log('reRender');
+    
     return (
         <div className='ticketByFilm flex justify-between gap-5'>
             <div className='ticketByFilm__film flex flex-col w-1/3'>
@@ -46,13 +45,13 @@ export default function TicketByFilm() {
                 <h2 className='ticketByFilm__film--title'>Chọn rạp</h2>
                 <ul className='ticketByFilm__film--list'>
                     {
-                        listThreate?.length === 0
+                        cinemaByFilm.data?.length === 0
                             ?
                             <li className='list__block'>
                                 <h2 className='list__block--title'>Vui lòng chọn rạp</h2>
                             </li>
                             :
-                            listThreate?.map(threate => (
+                            cinemaByFilm.data?.map(threate => (
                                 <li onClick={() => HandleTimes(threate.id)} className='list__block' key={threate.id}>
                                     <h2 className='list__block--title'>{threate.name}</h2>
                                 </li>

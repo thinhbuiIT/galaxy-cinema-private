@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { fetchFilmByCinemas } from '../../../services/cinemaApi'
+import { useDispatch, useSelector } from 'react-redux'
 import '../TicketByFilm/ticketByFilm.scss'
 
 export default function TicketByCinema() {
     const cinema = useSelector(state => state.cinema.data.data)
-    const [listFilm, setListFilm] = useState([])
+    const filmByCinema = useSelector(state => state.filmByCinema)
+    const dispatch = useDispatch()
     const [listTime, setListTime] = useState([])
 
-    const HandleFilm = async (code) => {
-        const response = await fetchFilmByCinemas(code)
-        setListFilm(response.data)
+    const HandleFilm = (code) => {
+        dispatch({type: 'FETCH_FILM_BY_CINEMA', payload: code})
     }
     const HandleTime = (id) => {
-        setListTime(listFilm.filter(item => item.id === id))
+        setListTime(filmByCinema?.data.filter(item => item.id === id))
     }
-    useEffect(() => {
-    }, [listTime])
     return (
         <div className='ticketByFilm flex justify-between gap-5'>
             <div className='ticketByFilm__cinema flex flex-col w-1/3'>
@@ -37,7 +34,7 @@ export default function TicketByCinema() {
                 </div>
                 <ul className='ticketByFilm__film--list'>
                     {
-                        listFilm?.map(film => (
+                        filmByCinema?.data.map(film => (
                             <li onClick={() => HandleTime(film.id)} className='list__block flex ' key={film.id}>
                                 <img src={film.imageLandscape} alt="image" />
                                 <div className='list__block--content'>
