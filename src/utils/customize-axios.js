@@ -1,6 +1,7 @@
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 export const api = axios.create({
-    baseURL: 'https://teachingserver.org/U2FsdGVkX18MaY1VB6bVfvVBm0wdPflO/cinema',
+    baseURL: apiUrl,
     headers: { 'accept': 'application/json' }
 });
