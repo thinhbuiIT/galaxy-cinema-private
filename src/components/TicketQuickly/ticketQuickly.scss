@@ -1,0 +1,64 @@
+@import '../../index.scss';
+
+.box-buy-ticket {
+    position: absolute;
+    right: 5%;
+    top: 13%;
+    background-color: #000000CC;
+
+    .ant-select-selector {
+        border-radius: 0;
+        background-color: rgba($color: #A0A3A7, $alpha: .3) !important;
+        color: #fff;
+        padding: .2rem 1rem !important;
+        height: 40px !important;
+        border: none !important;
+    }
+
+    .ant-tabs-nav-list {
+        transform: none;
+    }
+
+    .ant-tabs-tab {
+        &:hover {
+            color: $primary_color !important;
+        }
+    }
+
+    .ant-tabs-tab-active {
+        border-bottom: 2px solid $primary_color !important;
+        z-index: 999;
+
+        .ant-tabs-tab-btn {
+            color: $primary_color !important;
+        }
+    }
+
+    :where(.css-dev-only-do-not-override-nnuwmp).ant-tabs .ant-tabs-ink-bar {
+        position: absolute;
+        background: $primary_color;
+        pointer-events: none;
+    }
+
+    .ant-select-arrow {
+        color: #fff;
+    }
+
+    .ant-tabs {
+        padding: 0 1rem;
+        color: #fff;
+    }
+
+    &__title {
+        padding: .7rem 1rem;
+        background-color: $primary_color;
+        color: #fff;
+    }
+
+    &__button {
+        background-color: $primary_color;
+        color: #fff;
+        padding: .5rem 1rem;
+        text-align: end;
+    }
+}

@@ -67,8 +67,8 @@ const Slider = () => {
                         </div>
                     ))
                 }
-            </Carousel>
 
+            </Carousel>
 
             <TicketQuickly />
         </section>

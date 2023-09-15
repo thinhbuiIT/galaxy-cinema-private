@@ -7,7 +7,25 @@
     .ant-tabs-tab-btn {
         text-transform: uppercase;
         color: #000;
-        font-weight: 400;
+    }
+
+    .ant-tabs-nav-list {
+        transform: none;
+    }
+
+    .ant-tabs-tab {
+        &:hover {
+            color: $primary_color !important;
+        }
+    }
+
+    .ant-tabs-tab-active {
+        border-bottom: 2px solid $primary_color !important;
+        z-index: 999;
+
+        .ant-tabs-tab-btn {
+            color: $primary_color !important;
+        }
     }
 
     .ant-tabs-tab {
@@ -17,23 +35,17 @@
             color: #000;
             font-size: 1.125rem;
         }
-
-        // &-active {
-        //     // background-color: #ff5733;
-        //     /* Màu nền khi active */
-        //     color: $primary_color !important;
-        //     /* Màu chữ khi active */
-        //     border-color: #ff5733 !important;
-        //     border: none;
-        //     /* Màu đường viền khi active */
-        // }
     }
 
     .ant-tabs-content-holder {
         width: 100%;
     }
 
-
+    :where(.css-dev-only-do-not-override-nnuwmp).ant-tabs .ant-tabs-ink-bar {
+        position: absolute;
+        background: $primary_color;
+        pointer-events: none;
+    }
 
     &__button {
         margin-left: auto;
