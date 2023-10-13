@@ -1,9 +1,9 @@
-import React from 'react'
-import './blog.scss'
+import React, { memo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import './blog.scss'
 
-export default function Blog() {
+function Blog() {
     const blogComment = [
         {
             id: 1,
@@ -113,7 +113,7 @@ export default function Blog() {
     ]
     return (
         <div className='blog flex justify-center'>
-            <div className='container flex gap-8'>
+            <div className='container flex flex-wrap'>
                 <section className='blog__comment flex flex-col w-1/2 gap-5'>
                     <h1 className='blog__comment--title pb-5'>BÌNH LUẬN PHIM</h1>
                     {
@@ -160,3 +160,4 @@ export default function Blog() {
         </div >
     )
 }
+export default memo(Blog)

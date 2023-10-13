@@ -4,6 +4,8 @@ import Home from './pages/Home/Home'
 import Showtimes from './pages/Showtimes/Showtimes'
 import { useDispatch } from 'react-redux'
 import Navbar from './components/NavBar/Navbar'
+import Footer from './components/Footer/Footer'
+import Film from './pages/Film/Film'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -14,9 +16,11 @@ export default function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/lich-chieu" element={<Showtimes />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/lich-chieu" element={<Showtimes />} />
+        <Route exact path="/all-phim" element={<Film />} />
       </Routes>
+      <Footer />
     </Router>
   )
 }

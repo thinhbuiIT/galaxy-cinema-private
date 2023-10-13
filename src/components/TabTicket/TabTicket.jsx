@@ -1,29 +1,35 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Tabs } from 'antd';
 import TicketByCinema from './TicketByCinema/TicketByCinema';
 import TicketByFilm from './TicketByFilm/TicketByFilm';
 
 import './tabTicket.scss'
 
-const items = [
-    {
-        key: '1',
-        label: 'Theo Phim',
-        children: <TicketByFilm />,
-    },
-    {
-        key: '2',
-        label: 'Theo Rạp',
-        children: <TicketByCinema />,
-    }
-];
 
-export default function TabTicket() {
+
+const TabTicket = () => {
+    const items = [
+        {
+            key: '1',
+            label: 'Theo Phim',
+            children: <TicketByFilm />,
+        },
+        {
+            key: '2',
+            label: 'Theo Rạp',
+            children: <TicketByCinema />,
+        }
+    ];
+
     return (
         <div className='ticket flex justify-center'>
+            {
+                console.log('Re render ở component TabTicket')
+            }
             <div className='container'>
                 <Tabs defaultActiveKey="1" items={items} />
             </div>
         </div>
     )
 }
+export default memo(TabTicket)

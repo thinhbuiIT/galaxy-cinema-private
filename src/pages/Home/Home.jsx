@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <div>
             <Slider />
-            <TabFilm />
+            <TabFilm film={6} />
             <Blog />
         </div>
     )

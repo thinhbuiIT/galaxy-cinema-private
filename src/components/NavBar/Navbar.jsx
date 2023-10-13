@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { faCaretDown, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,7 +15,7 @@ const menu = [
     {
         id: 2,
         title: "Phim",
-        path: "",
+        path: "/all-phim",
         icon: <FontAwesomeIcon icon={faCaretDown} />
     },
     {
@@ -50,7 +50,7 @@ const menu = [
     }
 ]
 
-export default function Navbar() {
+function Navbar() {
     return (
         <div className='navbar'>
             <section className='navbar__head'>
@@ -87,7 +87,7 @@ export default function Navbar() {
                     </ul>
                 </div>
             </section>
-
         </div>
     )
 }
+export default memo(Navbar)

@@ -1,19 +1,11 @@
-import React, { useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import { Carousel } from 'antd';
 import './slider.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import TicketQuickly from '../TicketQuickly/TicketQuickly';
 
-const contentStyle = {
-    margin: 0,
-    height: '100%',
-    width: '100%',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#fff'
-};
+
 const sliderItems = [
     {
         id: 1,
@@ -63,7 +55,7 @@ const Slider = () => {
                 {
                     sliderItems.map(items => (
                         <div key={items.id}>
-                            <img style={contentStyle} src={items.imageUrl} />
+                            <img src={items.imageUrl} />
                         </div>
                     ))
                 }
@@ -74,4 +66,4 @@ const Slider = () => {
         </section>
     );
 };
-export default Slider;
+export default memo(Slider);

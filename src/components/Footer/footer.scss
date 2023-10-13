@@ -1,0 +1,20 @@
+@import '../../index.scss';
+
+.footer {
+    &__head {}
+
+    &__content {
+        h2 {
+            &::before {
+                content: "";
+                border-left: 3px solid $primary_color;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    &__foot {
+        margin-top: 2rem;
+        width: 100%;
+    }
+}
