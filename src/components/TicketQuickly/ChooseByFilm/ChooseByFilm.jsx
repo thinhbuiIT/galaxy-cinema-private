@@ -15,10 +15,10 @@ export default function ChooseByFilm() {
         setDay(cinemaByFilm.filter(film => (film.id === id)).map(items => items.dates))
     }
     const HandleGetTime = (dates) => {
-        console.log('OUTPUT : ', dates);
+        // console.log('OUTPUT : ', dates);
         // day[0].filter(dates => )
     }
-    console.log('cinemaByFilm : ', cinemaByFilm);
+    // console.log('cinemaByFilm : ', cinemaByFilm);
     return (
         <div className='flex flex-col gap-4'>
             <Select

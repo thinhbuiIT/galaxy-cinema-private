@@ -9,9 +9,11 @@ import Film from './pages/Film/Film'
 
 export default function App() {
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch({ type: 'APP_STARTUP' })
   }, [])
+
   return (
     <Router>
       <Navbar />

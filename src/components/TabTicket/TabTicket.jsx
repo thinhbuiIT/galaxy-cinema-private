@@ -5,8 +5,6 @@ import TicketByFilm from './TicketByFilm/TicketByFilm';
 
 import './tabTicket.scss'
 
-
-
 const TabTicket = () => {
     const items = [
         {
@@ -23,9 +21,6 @@ const TabTicket = () => {
 
     return (
         <div className='ticket flex justify-center'>
-            {
-                console.log('Re render ở component TabTicket')
-            }
             <div className='container'>
                 <Tabs defaultActiveKey="1" items={items} />
             </div>
