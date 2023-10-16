@@ -20,7 +20,7 @@ export default function ChooseByFilm() {
     }
     // console.log('cinemaByFilm : ', cinemaByFilm);
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 justify-center items-center'>
             <Select
                 defaultValue="Chọn Phim"
                 style={{ width: 330 }}

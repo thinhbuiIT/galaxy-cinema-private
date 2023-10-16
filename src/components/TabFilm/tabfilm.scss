@@ -1,9 +1,6 @@
 @import '../../index.scss';
 
 .tabFilm {
-    display: flex;
-    justify-content: center;
-
     .ant-tabs-tab-btn {
         text-transform: uppercase;
         color: #000;
@@ -48,8 +45,6 @@
     }
 
     &__button {
-        margin-left: auto;
-        padding: 1rem 2rem;
         color: $primary_color;
         border: 1px solid $primary_color;
 
@@ -60,16 +55,8 @@
     }
 
     .showing {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        width: 100%;
-        gap: 1rem;
 
         &__film {
-            width: 30%;
-            cursor: pointer;
-
             &--movie {
                 position: relative;
 

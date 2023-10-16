@@ -2,76 +2,19 @@
 
 .navbar {
 
-    &__head {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 5rem;
-        background-color: #fff;
-
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-    }
-
-    &__logo {
-        img {
-            width: 22.5rem;
-        }
-    }
-
     &__search {
         border: 1px solid rgba($color: #000000, $alpha: .2);
-        height: 2rem;
-
-        &--content {
-            display: flex;
-            align-items: center;
-            padding: .2rem 1rem;
-
-            input {
-                outline: none;
-            }
-        }
     }
 
     &__option {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
         color: $paragraph_color;
-        font-size: .9rem;
-
-        &--login {
-            display: flex;
-
-        }
-
-        &--i8vn {
-            a {
-                &:first-child {
-                    &::after {
-                        content: "";
-                        border-right: 1px solid gray;
-                        margin: .2rem;
-                    }
-                }
-            }
-        }
     }
 
     &__bot {
         background-color: #000000;
 
         &--item {
-            text-align: center;
-            color: #fff;
-            font-weight: 600;
             text-transform: uppercase;
-            padding: .8rem 1rem;
-            width: 100%;
 
             &:hover {
                 color: $primary_color;

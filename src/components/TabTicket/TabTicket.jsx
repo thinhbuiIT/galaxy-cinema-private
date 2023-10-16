@@ -3,8 +3,6 @@ import { Tabs } from 'antd';
 import TicketByCinema from './TicketByCinema/TicketByCinema';
 import TicketByFilm from './TicketByFilm/TicketByFilm';
 
-import './tabTicket.scss'
-
 const TabTicket = () => {
     const items = [
         {

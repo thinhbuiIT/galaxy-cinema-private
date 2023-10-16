@@ -1,11 +1,41 @@
-import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home/Home'
-import Showtimes from './pages/Showtimes/Showtimes'
-import { useDispatch } from 'react-redux'
-import Navbar from './components/NavBar/Navbar'
-import Footer from './components/Footer/Footer'
-import Film from './pages/Film/Film'
+import React, { Suspense, lazy, useEffect } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+const MainLayout = lazy(() => import('./Layout/MainLayout/MainLayout'));
+const Home = lazy(() => import('./pages/Home/Home'));
+const Showtimes = lazy(() => import('./pages/Showtimes/Showtimes'));
+const Film = lazy(() => import('./pages/Film/Film'));
+const Loading = lazy(() => import('./pages/Loading/Loading'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+
+const router = createBrowserRouter([
+  {
+    element:
+      <Suspense fallback={<Loading />}>
+        <MainLayout />
+      </Suspense>
+    ,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/lich-chieu',
+        element: <Showtimes />
+      },
+      {
+        path: 'all-film',
+        element: <Film />
+      },
+      {
+        path: '*',
+        element: <NotFound />
+      }
+    ]
+  }
+])
 
 export default function App() {
   const dispatch = useDispatch()
@@ -14,15 +44,5 @@ export default function App() {
     dispatch({ type: 'APP_STARTUP' })
   }, [])
 
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/lich-chieu" element={<Showtimes />} />
-        <Route exact path="/all-phim" element={<Film />} />
-      </Routes>
-      <Footer />
-    </Router>
-  )
+  return <RouterProvider router={router} />
 }

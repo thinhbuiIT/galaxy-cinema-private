@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function ChooseByCinema() {
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 justify-center items-center'>
             <Select
                 defaultValue="Chọn Rạp"
                 style={{ width: 330 }}

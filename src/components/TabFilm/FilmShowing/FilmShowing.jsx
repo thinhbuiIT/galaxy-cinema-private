@@ -4,14 +4,14 @@ import '../tabfilm.scss'
 
 function FilmShowing(props) {
     const { countRender } = props
-    const film = useSelector(state => state.film)
+    const film = useSelector(state => state.film.data.data?.movieShowing)
 
     return (
-        <div className='showing'>
+        <div className='showing flex justify-between flex-wrap w-full'>
             {
                 !countRender ?
-                    film.data.data?.movieShowing.map(film => (
-                        <div className='showing__film' key={film.id}>
+                    film?.map(film => (
+                        <div className='showing__film p-3 w-1/4 cursor-pointer max-[768px]:w-1/2' key={film.id}>
                             <div className="showing__film--movie">
                                 <img className='showing__film--image' src={film.imagePortrait} alt="image" />
                                 <div className="showing__film--hover flex flex-col gap-3 justify-center items-center">
@@ -25,8 +25,8 @@ function FilmShowing(props) {
                             </div>
                         </div>
                     )) :
-                    film.data.data?.movieShowing.slice(0, countRender).map(film => (
-                        <div className='showing__film' key={film.id}>
+                    film?.slice(0, countRender).map(film => (
+                        <div className='showing__film p-3 w-1/3 cursor-pointer max-[768px]:w-1/2' key={film.id}>
                             <div className="showing__film--movie">
                                 <img className='showing__film--image' src={film.imageLandscape} alt="image" />
                                 <div className="showing__film--hover flex flex-col gap-3 justify-center items-center">

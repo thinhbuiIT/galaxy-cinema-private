@@ -25,13 +25,17 @@ const items = [
 
 function TicketQuickly() {
     return (
-        <div className="box-buy-ticket">
-            <div className="flex justify-start">
-                <h2 className="box-buy-ticket__title uppercase">Mua Vé Nhanh</h2>
-            </div>
-            <Tabs defaultActiveKey="1" items={items} />
-            <div className="flex justify-end p-3">
-                <button className="box-buy-ticket__button uppercase">Mua Vé</button>
+        <div className="flex justify-center ">
+            <div className="container">
+                <div className="box-buy-ticket absolute top-[13%] right-[5%] max-[1024px]:static">
+                    <div className="flex justify-start">
+                        <h2 className="box-buy-ticket__title uppercase">Mua Vé Nhanh</h2>
+                    </div>
+                    <Tabs defaultActiveKey="1" items={items} />
+                    <div className="flex justify-end p-3">
+                        <button className="box-buy-ticket__button uppercase">Mua Vé</button>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -48,22 +48,23 @@ const Slider = () => {
         }
     }
     return (
-        <section className='slider'>
-            <button className='slider__button--prev' onClick={HandlePrev}> <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: '40px', color: '#c5cad3' }} /> </button>
-            <button className='slider__button--next' onClick={HandleNext}> <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: '40px', color: '#c5cad3' }} /> </button>
-            <Carousel ref={carouselRef} dotPosition='bottom' autoplay autoplaySpeed={2000} infinite>
-                {
-                    sliderItems.map(items => (
-                        <div key={items.id}>
-                            <img src={items.imageUrl} />
-                        </div>
-                    ))
-                }
+        <div className='slider flex flex-col justify-center relative max-[1024px]:static'>
+            <div className='slider__content relative'>
+                <button className='slider__button--prev absolute z-10 h-full px-5 bg-gradient-to-l from-[#ffffff00] to-[#00000020] max-[768px]:hidden' onClick={HandlePrev}> <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: '40px', color: '#c5cad3' }} /> </button>
+                <button className='slider__button--next absolute z-10 h-full px-5 right-0 bg-gradient-to-r from-[#ffffff00] to-[#00000020] max-[768px]:hidden' onClick={HandleNext}> <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: '40px', color: '#c5cad3' }} /> </button>
+                <Carousel ref={carouselRef} dotPosition='bottom' autoplay autoplaySpeed={2000} infinite>
+                    {
+                        sliderItems.map(items => (
+                            <div key={items.id}>
+                                <img src={items.imageUrl} />
+                            </div>
+                        ))
+                    }
 
-            </Carousel>
-
+                </Carousel>
+            </div>
             <TicketQuickly />
-        </section>
+        </div>
     );
 };
 export default memo(Slider);

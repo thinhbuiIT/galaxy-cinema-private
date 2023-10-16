@@ -5,11 +5,11 @@ function FilmCommingSoon(props) {
     const { countRender } = props
     const film = useSelector(state => state.film)
     return (
-        <div className='showing'>
+        <div className='showing flex justify-between flex-wrap w-full'>
             {
                 !countRender ?
                     film.data.data?.movieCommingSoon.map(film => (
-                        <div className='showing__film' key={film.id}>
+                        <div className='showing__film p-3 w-1/4 cursor-pointer max-[768px]:w-1/2' key={film.id}>
                             <div className="showing__film--movie">
                                 <img className='showing__film--image' src={film.imagePortrait} alt="image" />
                                 <div className="showing__film--hover flex flex-col gap-3 justify-center items-center">
@@ -24,7 +24,7 @@ function FilmCommingSoon(props) {
                         </div>
                     )) :
                     film.data.data?.movieCommingSoon.slice(0, countRender).map(film => (
-                        <div className='showing__film' key={film.id}>
+                        <div className='showing__film p-3 w-1/3 cursor-pointer max-[768px]:w-1/2' key={film.id}>
                             <div className="showing__film--movie">
                                 <img className='showing__film--image' src={film.imageLandscape} alt="image" />
                                 <div className="showing__film--hover flex flex-col gap-3 justify-center items-center">

@@ -3,10 +3,6 @@
 .blog {
     &__comment {
         &--title {
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            font-weight: 400;
-
             &::after {
                 display: block;
                 width: 50px;
@@ -18,35 +14,8 @@
         }
 
         &--block {
-            cursor: pointer;
-
-            .image {
-                width: 100%;
-                height: auto;
-                transition: opacity 0.3s ease;
-            }
-
-            .likes {
-                background-color: #327fea;
-                color: #fff;
-                border-radius: 5px;
-                padding: 0 10px;
-                margin-right: 10px;
-                font-size: 13px;
-            }
-
-            .eyes {
-                background-color: rgba($color: #000000, $alpha: .2);
-                border-radius: 5px;
-                padding: 0 10px;
-                font-size: 13px;
-                margin-right: 10px;
-            }
-
             .block__content {
                 &--title {
-                    font-size: 1.125rem;
-                    overflow: hidden;
                     text-overflow: ellipsis;
                     max-height: 3rem;
                 }
@@ -54,20 +23,13 @@
                 &--paragraph {
                     color: $paragraph_color;
                     white-space: wrap;
-                    overflow: hidden;
-                    /* Ẩn nội dung tràn */
                     text-overflow: ellipsis;
-                    /* Hiển thị dấu chấm (...) khi tràn nội dung */
-                    width: 300px;
+                    inline-size: 200px;
                     max-height: 3rem;
                 }
             }
 
             &:hover {
-                img {
-                    opacity: .7;
-                }
-
                 h2 {
                     color: $primary_color;
                 }

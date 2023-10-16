@@ -9,14 +9,14 @@ export default function TicketByCinema() {
     const [listTime, setListTime] = useState([])
 
     const HandleFilm = (code) => {
-        dispatch({type: 'FETCH_FILM_BY_CINEMA', payload: code})
+        dispatch({ type: 'FETCH_FILM_BY_CINEMA', payload: code })
     }
     const HandleTime = (id) => {
         setListTime(filmByCinema?.data.filter(item => item.id === id))
     }
     return (
-        <div className='ticketByFilm flex justify-between gap-5'>
-            <div className='ticketByFilm__cinema flex flex-col w-1/3'>
+        <div className='ticketByFilm flex justify-between gap-5 max-[768px]:flex-col'>
+            <div className='ticketByFilm__cinema flex flex-col w-1/3 h-[100%] max-[768px]:h-[300px] max-[768px]:w-full max-[768px]:overflow-y-scroll'>
                 <h2 className='ticketByFilm__film--title'>Chọn rạp</h2>
                 <ul className='ticketByFilm__film--list'>
                     {
@@ -28,7 +28,7 @@ export default function TicketByCinema() {
                     }
                 </ul>
             </div>
-            <div className='ticketByFilm__film flex flex-col w-1/3'>
+            <div className='ticketByFilm__film flex flex-col w-1/3 h-[100%] max-[768px]:h-[300px] max-[768px]:w-full max-[768px]:overflow-y-scroll'>
                 <div className='ticketByFilm__film--title'>
                     <h2>Chọn phim</h2>
                 </div>
@@ -49,7 +49,7 @@ export default function TicketByCinema() {
                 </ul>
             </div>
 
-            <div className='ticketByFilm__time flex flex-col w-1/3'>
+            <div className='ticketByFilm__time flex flex-col w-1/3 h-[100%]  max-[768px]:h-[300px] max-[768px]:w-full max-[768px]:overflow-y-scroll'>
                 <h2 className='ticketByFilm__film--title'>Chọn suất</h2>
                 <ul className='ticketByFilm__film--list'>
                     {
