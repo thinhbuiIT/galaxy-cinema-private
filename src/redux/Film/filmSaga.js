@@ -5,7 +5,7 @@ import { fetchCinemaByFilmFailure, fetchCinemaByFilmStart, fetchCinemaByFilmSucc
 
 function* fetchFilmSaga() {
     try {
-        // yield delay(2000)
+        yield delay(500)
         yield put(fetchFilmStart())
         const data = yield call(fetchFilmNowAndSoon);
         yield put(fetchFilmSuccess(data));

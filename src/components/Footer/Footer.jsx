@@ -44,7 +44,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer__foot mt-[2rem] w-full flex items-center gap-4 border-t-[1px solid gray] text-[#FFFFFFB3] max-[768px]:flex-col">
-                    <img src="https://www.galaxycine.vn/website/images/galaxy-logo-footer.png" alt="" />
+                    <img src="https://www.galaxycine.vn/_next/static/media/galaxy-logo-footer.7a918263.svg" alt="" />
                     <p>Công Ty Cổ Phần Phim Thiên Ngân, Tầng 3, Toà Nhà Bitexco Nam Long, 63A Võ Văn Tần, P. Võ Thị Sáu, Quận 3, Tp. Hồ Chí Minh</p>
                 </div>
             </div>

@@ -1,6 +1,6 @@
-import { Select } from 'antd'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Select } from 'antd'
 
 export default function ChooseByFilm() {
     const film = useSelector(state => state.film.data.data?.movieShowing)
@@ -22,25 +22,26 @@ export default function ChooseByFilm() {
     return (
         <div className='flex flex-col gap-4 justify-center items-center'>
             <Select
-                defaultValue="Chọn Phim"
+                placeholder="Chọn Phim"
+                className='max-[768px]:text-black'
                 style={{ width: 330 }}
                 onChange={HandleFetchCinemas}
                 options={film?.map(items => ({ value: items.id, label: items.name }))}
             />
             <Select
-                defaultValue="Chọn Rạp"
+                placeholder="Chọn Rạp"
                 style={{ width: 330 }}
                 onChange={HandleGetDay}
                 options={cinemaByFilm?.map(items => ({ value: items.id, label: items.name }))}
             />
             <Select
-                defaultValue="Chọn Ngày"
+                placeholder="Chọn Ngày"
                 style={{ width: 330 }}
                 onChange={HandleGetTime}
                 options={day[0]?.map(items => ({ value: items.showDate, label: items.dayOfWeekLabel + ' ' + items.showDate }))}
             />
             <Select
-                defaultValue="Chọn Suất"
+                placeholder="Chọn Suất"
                 style={{ width: 330 }}
                 // onChange={handleChange}
                 options={[

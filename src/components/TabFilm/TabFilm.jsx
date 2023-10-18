@@ -1,12 +1,13 @@
-import React from 'react'
 import { Tabs } from 'antd';
+import { Link } from 'react-router-dom';
+
 import FilmShowing from './FilmShowing/FilmShowing';
 import FilmCommingSoon from './FilmCommingSoon/FilmCommingSoon';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import './tabfilm.scss'
-import { Link } from 'react-router-dom';
 
 export default function TabFilm(props) {
     const { film } = props
@@ -23,11 +24,11 @@ export default function TabFilm(props) {
         }
     ]
     return (
-        <section className='tabFilm flex justify-center'>
+        <section className='tabFilm flex justify-center mt-[50px]'>
             <div className='container flex flex-col justify-start'>
                 <Tabs defaultActiveKey="1" items={items} />
                 {
-                    film && <Link className='tabFilm__button mt-5 p-3 ml-auto' to={'all-film'}>
+                    film && <Link className='tabFilm__button m-5 p-[10px_50px] mx-auto' to={'all-film'}>
                         Xem Thêm <FontAwesomeIcon icon={faArrowRight} />
                     </Link>
                 }
