@@ -1,6 +1,7 @@
 export const menuItems = [
     {
         label: 'Phim',
+        path: '/all-film',
         key: 'movie',
         children: [
             {

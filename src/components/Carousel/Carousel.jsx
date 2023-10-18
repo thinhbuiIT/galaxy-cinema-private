@@ -1,6 +1,6 @@
-import React, { memo, useRef } from 'react';
+import React, { memo, useMemo, useRef } from 'react';
 
-import { Carousel, ConfigProvider } from 'antd';
+import { Carousel } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,11 +30,11 @@ const Caurosel = () => {
                 <button className='slider__button--prev absolute z-10 h-full px-2 max-[768px]:hidden' onClick={HandlePrev}> <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: '40px', color: '#c5cad3' }} /> </button>
                 <button className='slider__button--next absolute z-10 h-full px-2 right-0 max-[768px]:hidden' onClick={HandleNext}> <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: '40px', color: '#c5cad3' }} /> </button>
 
-                <Carousel className="custom-3d-carousel" ref={carouselRef} dotPosition='bottom' >
+                <Carousel className="custom-3d-carousel" ref={carouselRef} dotPosition='top' >
                     {
                         sliderItems.map(items => (
-                            <div className='custom-3d-carousel-item text-center w-full px-[50px]' key={items.id} >
-                                <img  src={items.imageUrl} />
+                            <div className='custom-3d-carousel-item text-center w-full px-[50px] max-[768px]:px-0' key={items.id} >
+                                <img src={items.imageUrl} />
                             </div>
                         ))
                     }
