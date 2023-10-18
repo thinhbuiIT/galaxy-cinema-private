@@ -16,4 +16,8 @@ $paragraph_color: #A0A3A7;
 
 .container {
     width: 80%;
+
+    @media (min-width:768px) {
+        width: 90%;
+    }
 }
