@@ -1,5 +1,7 @@
-import React, { memo, useState } from 'react';
+import { memo, useState } from 'react';
+
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { faBars, faCaretDown, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,13 +11,91 @@ import logo from '../../assets/logo.jpg';
 import buyTicket from '../../assets/btn-ticket.jpg';
 import ModalLogin from '../ModalLogin/ModalLogin';
 
-import { menuItems } from '../../Constant/menuItems';
-
 import './header.scss';
+
+const menuItems = [
+    {
+        label: (
+            <Link to={'/all-film'}>Phim <FontAwesomeIcon icon={faCaretDown} /></Link>
+        ),
+        path: '/all-film',
+        key: 'movie',
+        children: [
+            {
+                type: 'text',
+                label: 'Phim Đang Chiếu',
+                path: '/all-film',
+                key: 'movie/1'
+            },
+            {
+                type: 'text',
+                label: 'Phim Sắp chiếu',
+                path: '/all-film',
+                key: 'movie/2'
+            },
+        ]
+    },
+    {
+        label: (
+            <Link to={'/'}>Blog <FontAwesomeIcon icon={faCaretDown} /></Link>
+        ),
+        key: 'blog',
+        children: [
+            {
+                type: 'text',
+                label: 'Thể loại phim',
+                key: 'blog/1'
+            },
+            {
+                type: 'text',
+                label: 'Diễn viên',
+                key: 'blog/2'
+            },
+            {
+                type: 'text',
+                label: 'Đạo diễn',
+                key: 'blog/3'
+            },
+            {
+                type: 'text',
+                label: 'Bình luận viên',
+                key: 'blog/4'
+            },
+            {
+                type: 'text',
+                label: 'Blog điện ảnh',
+                key: 'blog/5'
+            },
+        ],
+    },
+    {
+        label: (
+            <Link to={'/'}>Sự kiện <FontAwesomeIcon icon={faCaretDown} /></Link>
+        ),
+        key: 'promotion',
+        children: [
+            {
+                type: 'text',
+                label: 'Ưu đãi',
+                key: 'promotion/1'
+            },
+            {
+                type: 'text',
+                label: 'Phim hay tháng',
+                key: 'promotion/2'
+            },
+        ]
+    },
+    {
+        label: 'Rạp/Giá Vé',
+        key: 'booking',
+    }
+];
 
 function Header() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [open, setOpen] = useState(false);
+    const userInfo = useSelector(state => state.user.user)
 
     const showDrawer = () => {
         setOpen(true);
@@ -23,6 +103,8 @@ function Header() {
     const onClose = () => {
         setOpen(false);
     };
+
+    
 
     return (
         <div className='header h-[115px]'>
@@ -50,7 +132,12 @@ function Header() {
                         </div>
                         <div className='header__option--login flex items-center'>
                             <div className='hidden max-[768px]:block'><FontAwesomeIcon icon={faUser} size='lg' /></div>
-                            <span className='cursor-pointer mx-1' onClick={() => setIsModalOpen(pre => !pre)}>Đăng nhập</span>
+                            {
+                                userInfo.Name ?
+                                    <span className='cursor-pointer mx-1'>{userInfo.Name}</span>
+                                    :
+                                    <span className='cursor-pointer mx-1' onClick={() => setIsModalOpen(pre => !pre)}>Đăng nhập</span>
+                            }
                         </div>
                         <div className='header__option--img max-[768px]:hidden'>
                             <img src="https://www.galaxycine.vn/_next/static/media/join-Gstar.24c52de9.svg" alt="" />

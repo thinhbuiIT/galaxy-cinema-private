@@ -1,10 +1,9 @@
-import { ConfigProvider, Select, Tabs } from "antd"
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import ChooseByFilm from "./ChooseByFilm/ChooseByFilm";
 
 import './ticketQuickly.scss'
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
 const items = [
     {
@@ -27,8 +26,6 @@ function TicketQuickly() {
         setDay(cinemaByFilm.filter(film => (film.id === e.target.value)).map(items => items.dates))
     }
     const HandleGetTime = (dates) => {
-        // console.log('OUTPUT : ', dates);
-        // day[0].filter(dates => )
     }
     return (
         <div className="flex justify-center w-full">

@@ -1,9 +1,8 @@
 import { memo } from "react"
 import { useSelector } from "react-redux"
-import '../tabfilm.scss'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faStar } from "@fortawesome/free-solid-svg-icons"
 import BlockFilm from "../BlockFilm/BlockFilm"
+
+import '../tabfilm.scss'
 
 function FilmShowing(props) {
     const { countRender } = props

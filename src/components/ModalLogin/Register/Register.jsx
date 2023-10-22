@@ -1,20 +1,52 @@
 import { memo } from 'react'
+import { Form, Input, Button } from 'antd'
+import { useDispatch } from 'react-redux';
 
-function Register() {
+function Register({ setIsModalOpen }) {
+    const dispatch = useDispatch()
+
+    const HandleRegister = (value) => {
+        dispatch({ type: 'REGISTER', payload : value})
+        setIsModalOpen(pre => !pre)
+    }
+
     return (
         <div className='register flex flex-col gap-4'>
-            <div className='register__username flex flex-col'>
-                <label htmlFor='username'>UserName </label>
-                <input required id='username' className='outline-none p-1 border-2 border-gray' type="text" placeholder='User name' />
-            </div>
-            <div className='register__password flex flex-col'>
-                <label htmlFor='password'>Password </label>
-                <input required id='password' className='outline-none p-1 border-2 border-gray' type="password" placeholder='Password' />
-            </div>
-            <div className='register__cfpassword flex flex-col'>
-                <label htmlFor='cfpassword'>Confirm Password </label>
-                <input required id='cfpassword' className='outline-none p-1 border-2 border-gray' type="password" placeholder='Confirm Password' />
-            </div>
+            <Form
+                name="Register"
+                initialValues={{ remember: true }}
+                onFinish={HandleRegister}
+            >
+                <Form.Item
+                    label="Email"
+                    name="Email"
+                    rules={[{ required: true, message: 'Vui lòng nhập email!' }]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    label="FullName"
+                    name="Name"
+                    rules={[{ required: true, message: 'Vui lòng nhập họ tên!' }]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    label="Password"
+                    name="Password"
+                    rules={[{ required: true, message: 'Vui lòng nhập password!' }]}
+                >
+                    <Input.Password />
+                </Form.Item>
+
+                <Form.Item>
+                    <Button className='bg-[#034EA2] w-full text-white' htmlType="submit">
+                        Đăng ký
+                    </Button>
+                </Form.Item>
+            </Form>
         </div>
     )
 }

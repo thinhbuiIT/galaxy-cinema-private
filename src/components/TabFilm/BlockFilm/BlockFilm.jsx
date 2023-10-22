@@ -1,15 +1,20 @@
 import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, useHistory } from 'react-router-dom';
+
 import '../tabfilm.scss';
 
- function BlockFilm({ film }) {
+function BlockFilm({ film }) {
+    const history = useHistory()
+    const nav = useNavigate()
+
     return (
         <div className='showing__film p-3 w-1/4 cursor-pointer max-[768px]:w-1/2' key={film.id}>
             <div className="showing__film--movie">
                 <img className='showing__film--image' src={film.imagePortrait} alt="image" />
                 <div className="showing__film--hover flex flex-col gap-3 justify-center items-center">
-                    <button className="px-6 py-3 uppercase p-3">Mua vé</button>
+                    <button onClick={() => history.replace(`detail/${film.slug}`)} className="px-6 py-3 uppercase p-3">Mua vé</button>
                     <button className="px-6 py-3 uppercase p-3">Trailer</button>
                 </div>
                 <div className='showing__film--point absolute right-4 bottom-10 z-10'>

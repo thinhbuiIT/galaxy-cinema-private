@@ -20,37 +20,33 @@ export default function ChooseByFilm() {
     }
     // console.log('cinemaByFilm : ', cinemaByFilm);
     return (
-        <div className='flex flex-col gap-4 justify-center items-center'>
-            <Select
-                placeholder="Chọn Phim"
-                className='max-[768px]:text-black'
-                style={{ width: 330 }}
-                onChange={HandleFetchCinemas}
-                options={film?.map(items => ({ value: items.id, label: items.name }))}
-            />
-            <Select
-                placeholder="Chọn Rạp"
-                style={{ width: 330 }}
-                onChange={HandleGetDay}
-                options={cinemaByFilm?.map(items => ({ value: items.id, label: items.name }))}
-            />
-            <Select
-                placeholder="Chọn Ngày"
-                style={{ width: 330 }}
-                onChange={HandleGetTime}
-                options={day[0]?.map(items => ({ value: items.showDate, label: items.dayOfWeekLabel + ' ' + items.showDate }))}
-            />
-            <Select
-                placeholder="Chọn Suất"
-                style={{ width: 330 }}
-                // onChange={handleChange}
-                options={[
-                    { value: 'jack', label: 'Jack' },
-                    { value: 'lucy', label: 'Lucy' },
-                    { value: 'Yiminghe', label: 'yiminghe' },
-                    { value: 'disabled', label: 'Disabled', disabled: true },
-                ]}
-            />
+        <div className="flex flex-wrap h-full">
+            <select className="h-full outline-none overflow-y-scroll w-[200px]" onChange={HandleFetchCinemas}>
+                <option hidden value="" key="">
+                    Chọn phim
+                </option>
+                {
+                    film?.map(items => <option key={items.id} className="m-[20px]" value={items.id}>{items.name}</option>)
+                }
+            </select>
+            <select className="h-full outline-none overflow-y-scroll w-[200px]" onChange={HandleGetDay}>
+                <option hidden value="" key="">Chọn Rạp</option>
+                {
+                    cinemaByFilm?.map(items => <option key={items.id} className="m-[20px]" value={items.id}>{items.name}</option>)
+                }
+            </select>
+            <select className="h-full outline-none overflow-y-scroll w-[200px]" onChange={HandleGetTime}>
+                <option hidden value="" key="">Chọn Ngày</option>
+                {
+                    day[0]?.map((items, index) => <option key={index} className="m-[20px]" value={items.id}>{items.dayOfWeekLabel + ' ' + items.showDate}</option>)
+                }
+            </select>
+            <select className="h-full outline-none overflow-y-scroll w-[200px]" onChange={HandleGetTime}>
+                <option hidden value="" key="">Chọn Suất</option>
+                {/* {
+                                day[0]?.map((items, index) => <option key={index} className="m-[20px]" value={items.id}>{items.dayOfWeekLabel + ' ' + items.showDate}</option>)
+                            } */}
+            </select>
         </div>
     )
 }

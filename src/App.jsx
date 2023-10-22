@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -7,6 +7,7 @@ const Home = lazy(() => import('./pages/Home/Home'));
 const Showtimes = lazy(() => import('./pages/Showtimes/Showtimes'));
 const Film = lazy(() => import('./pages/Film/Film'));
 const Loading = lazy(() => import('./pages/Loading/Loading'));
+const DetailFilm = lazy(() => import('./pages/DetailFilm/DetailFilm'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: 'all-film',
         element: <Film />
+      },
+      { 
+        path: 'detail/:slug',
+        element: <DetailFilm />
       },
       {
         path: '*',

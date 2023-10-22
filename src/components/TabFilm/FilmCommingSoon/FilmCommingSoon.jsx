@@ -7,6 +7,8 @@ import '../tabfilm.scss'
 function FilmCommingSoon(props) {
     const { countRender } = props
     const film = useSelector(state => state.film.data.data?.movieCommingSoon)
+
+    console.log('FilmCommingSoon : ',film);
     return (
         <div className='showing flex justify-between flex-wrap w-full'>
             {
