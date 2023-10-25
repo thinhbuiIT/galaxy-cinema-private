@@ -93,16 +93,6 @@
                     padding: 3px 5px;
                     color: #fff;
                 }
-
-                button {
-                    color: #fff;
-                    border: 1px solid #fff;
-
-                    &:hover {
-                        background-color: $primary_color;
-                        border-color: $primary_color;
-                    }
-                }
             }
             &--image{
                 border-radius: 12px;

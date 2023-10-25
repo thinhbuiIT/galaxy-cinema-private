@@ -14,6 +14,7 @@ export default function TicketByFilm() {
     const HandleThreate = (id) => {
         dispatch({ type: 'FETCH_CINEMA_BY_FILM', payload: id })
     }
+    
     const HandleTimes = (id) => {
         setListTimes(cinemaByFilm.data?.filter(time => time.id === id))
     }

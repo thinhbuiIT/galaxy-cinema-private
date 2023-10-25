@@ -2,12 +2,12 @@ import { memo } from 'react'
 import { Form, Input, Button } from 'antd'
 import { useDispatch } from 'react-redux';
 
-function Register({ setIsModalOpen }) {
+function Register() {
     const dispatch = useDispatch()
 
     const HandleRegister = (value) => {
         dispatch({ type: 'REGISTER', payload : value})
-        setIsModalOpen(pre => !pre)
+        dispatch({type:'modal/closeModal'})
     }
 
     return (

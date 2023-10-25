@@ -1,11 +1,11 @@
 import { memo, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { faBars, faCaretDown, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faBars, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Drawer, Menu, } from 'antd';
+import { Drawer, Menu } from 'antd';
 
 import logo from '../../assets/logo.jpg';
 import buyTicket from '../../assets/btn-ticket.jpg';
@@ -16,7 +16,7 @@ import './header.scss';
 const menuItems = [
     {
         label: (
-            <Link to={'/all-film'}>Phim <FontAwesomeIcon icon={faCaretDown} /></Link>
+            <Link to={'/all-film'}>Phim</Link>
         ),
         path: '/all-film',
         key: 'movie',
@@ -37,7 +37,7 @@ const menuItems = [
     },
     {
         label: (
-            <Link to={'/'}>Blog <FontAwesomeIcon icon={faCaretDown} /></Link>
+            <Link to={'/'}>Blog</Link>
         ),
         key: 'blog',
         children: [
@@ -70,7 +70,7 @@ const menuItems = [
     },
     {
         label: (
-            <Link to={'/'}>Sự kiện <FontAwesomeIcon icon={faCaretDown} /></Link>
+            <Link to={'/'}>Sự kiện</Link>
         ),
         key: 'promotion',
         children: [
@@ -93,32 +93,33 @@ const menuItems = [
 ];
 
 function Header() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [open, setOpen] = useState(false);
     const userInfo = useSelector(state => state.user.user)
+    const dispatch = useDispatch()
 
     const showDrawer = () => {
         setOpen(true);
-    };
+    }
     const onClose = () => {
         setOpen(false);
-    };
+    }
 
-    
+    const HandleLogout = () => {
+        dispatch({ type: 'user/logout' })
+    }
 
     return (
         <div className='header h-[115px]'>
             <section className='header__head flex justify-center h-full bg-white'>
                 <div className='container flex items-center justify-between '>
-
                     <div className='header__logo flex items-center'>
                         <Link to={'/'}>
                             <img className='h-[60px] w-full max-[768px]:h-[40px]' src={logo} alt="" />
                         </Link>
-                        <img className='w-[112px] h-[36px] ml-7 max-[768px]:p-1' src={buyTicket} alt="" />
                     </div>
 
-                    <div className='header__list flex items-center justify-center '>
+                    <div className='header__list flex items-center justify-center gap-10'>
+                        <img className='w-[112px] h-[36px] ml-7 max-[768px]:p-1' src={buyTicket} alt="" />
                         <div className='header__list--menu w-[400px] h-full max-[768px]:hidden'>
                             <Menu style={{ width: '100%' }} mode="horizontal" items={menuItems} />
                         </div>
@@ -134,9 +135,14 @@ function Header() {
                             <div className='hidden max-[768px]:block'><FontAwesomeIcon icon={faUser} size='lg' /></div>
                             {
                                 userInfo.Name ?
-                                    <span className='cursor-pointer mx-1'>{userInfo.Name}</span>
+                                    <>
+                                        <span className='cursor-pointer mx-1'>{userInfo.Name}</span>
+                                        <button onClick={HandleLogout}>
+                                            <FontAwesomeIcon className='cursor-pointer p-3' icon={faArrowRightFromBracket} size='lg' />
+                                        </button>
+                                    </>
                                     :
-                                    <span className='cursor-pointer mx-1' onClick={() => setIsModalOpen(pre => !pre)}>Đăng nhập</span>
+                                    <span className='cursor-pointer mx-1' onClick={() => dispatch({type: 'modal/openModal'})}>Đăng nhập</span>
                             }
                         </div>
                         <div className='header__option--img max-[768px]:hidden'>
@@ -164,10 +170,10 @@ function Header() {
                             <Menu style={{ width: '100%' }} mode="inline" items={menuItems} />
                         </Drawer>
                     </div>
-
                 </div>
             </section>
-            <ModalLogin isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+
+            <ModalLogin />
         </div>
     )
 }

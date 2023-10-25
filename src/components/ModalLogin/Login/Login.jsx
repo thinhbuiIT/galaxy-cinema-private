@@ -2,12 +2,12 @@ import { memo } from 'react'
 import { Form, Input, Button } from 'antd'
 import { useDispatch } from 'react-redux';
 
-function Login({ setIsModalOpen }) {
+function Login() {
   const dispatch = useDispatch();
 
   const HandleLogin = (value) => {
     dispatch({ type: 'LOGIN', payload: value })
-    setIsModalOpen(pre => !pre)
+    dispatch({ type: 'modal/closeModal' })
   }
 
   return (

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import createNotification from "../../utils/notifications"
 
 const initialState = {
     user: {},
@@ -21,6 +22,10 @@ const userSlice = createSlice({
         loginFailure: (state, action) => {
             state.loading = false
             state.error = action.payload
+        },
+        logout : (state, action) => {
+            createNotification({type: 'success', message: 'Đăng xuất thành công'})
+            return initialState
         }
     }
 })

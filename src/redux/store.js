@@ -7,6 +7,8 @@ import cinemaReducer from './Cinema/cinemaSlice'
 import cinemaByFilmReducer from './Film/CinemaByFilm/cinemaByFilmSlice';
 import filmByCinemaReducer from './Cinema/FilmByCinema/filmByCinemaSlice';
 import userReducer from './User/userSlice';
+import modalReducer from './Modal/modalSlice';
+import bookingReducer from './BookingDetail/bookingDetailSlice';
 import rootSaga from './saga';
 
 const rootReducer = combineReducers({
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
     cinema: cinemaReducer,
     cinemaByFilm : cinemaByFilmReducer,
     filmByCinema: filmByCinemaReducer,
-    user: userReducer
+    user: userReducer,
+    booking: bookingReducer,
+    modal: modalReducer
 });
 
 const sagaMiddleware = createSagaMiddleware()

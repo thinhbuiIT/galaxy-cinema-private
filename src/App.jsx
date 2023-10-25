@@ -8,6 +8,7 @@ const Showtimes = lazy(() => import('./pages/Showtimes/Showtimes'));
 const Film = lazy(() => import('./pages/Film/Film'));
 const Loading = lazy(() => import('./pages/Loading/Loading'));
 const DetailFilm = lazy(() => import('./pages/DetailFilm/DetailFilm'));
+const Booking = lazy(() => import('./pages/Booking/Booking'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       { 
         path: 'detail/:slug',
         element: <DetailFilm />
+      },
+      { 
+        path: 'booking',
+        element: <Booking />
       },
       {
         path: '*',
